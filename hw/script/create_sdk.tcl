@@ -42,6 +42,9 @@ createhw -name $hw_name -hwspec $sdk_dir/top.hdf
 puts "*INFO*  Creating BSP \"$bsp_name\"."
 createbsp -name ${bsp_name} -proc ps7_cortexa9_0 -hwproject ${hw_name} -os standalone
 
+# add libraries for APP
+setlib -bsp ${bsp_name} -lib xilffs
+
 # regen and build
 regenbsp -hw ${hw_name} -bsp ${bsp_name}
 projects -build -type bsp -name ${bsp_name}
@@ -65,6 +68,7 @@ importsources -name ${app_name} -path $repo_dir/sw
 
 # build APP
 puts "*INFO*  Build ${app_name}."
+configapp -app ${app_name} -add compiler-misc {-Ixilffs}
 projects -build -type app -name ${app_name}
 
 puts "*INFO*  Exit from \"create_sdk.tcl\" and return to \"create_proj.tcl\"."
