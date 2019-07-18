@@ -25,24 +25,34 @@ This PYNQ-Z2 board has only two PMOD interfaces, so we connect the FPGA with the
 
 ### Generate HLS IPs
 
+The stereo vision component is written in Vivado HLS, so please follow these steps to generate and export the IP core.
 
+All the relevant HLS C++ files can be found in `\$REPO_PATH/hls/src`.
+
+A Tcl script named `make.tcl` is included in `\$REPO_PATH/hls`. You can use `vivado_hls` to execute it in the Vivado HLS Prompt.
+
+```tcl
+vivado_hls $REPO_PATH/hls/make.tcl
+```
+
+This project will create a HLS project in `\$REPO_PATH/work/sv_hls`, and you need to extract the exported IP to the IP repository folder (`\$REPO_PATH/ip_repo`). The following Vivado building scripts will search for third-part and user-defined IP cores in this folder.
 
 ### Build Vivado Project
 
-You can "source" scripts in your Vivado Tcl Console to build the Vivado project. These scripts will import RTL files, third-part IPs, SDK C++ files and other necessary files automatically.
+You can "source" scripts in your Vivado Tcl Console to build the Vivado project. These scripts will import RTL files, third-part IPs, SDK C++ files and other necessary files.
 
 ```tcl
 set argv [list project=sv_fpga sdk=yes version_override=yes]
 set argc [llength $argv]
 source "$REPO_PATH/hw/make.tcl" -notrace
 ```
-Due to the maximum path length limitation on Winodows (<260), do NOT specify a very long project name.
+Due to the maximum path length limitation on Windows (<260), do NOT specify a very long project name.
 The default building path is `\$REPO_PATH/work/\$PROJ_NAME`.
 
 ## Contributors
 
 - Haozhe Zhu ([@zhutmost](https://github.com/zhutmost))
-- Jinglei Yang
+- Jinglei Yang ([@MsYangjl](https://github.com/MsYangjl))
 - Liyu Lin ([@lylinsh](https://github.com/lylinsh))
 - Yinfei Pan
 

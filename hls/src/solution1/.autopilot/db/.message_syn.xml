@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+	<Message severity="WARNING" prefix="[HLS 200-40]" key="HLS_40_1310" tag="" content="Cannot find source file camera_param.h; skipping it."/>
+	<Message severity="WARNING" prefix="[HLS 200-40]" key="HLS_40_1310" tag="" content="Cannot find source file stereovision.h; skipping it."/>
+	<Message severity="WARNING" prefix="[HLS 200-40]" key="HLS_40_1310" tag="" content="Cannot find source file stereovision.cc; skipping it."/>
+	<Message severity="ERROR" prefix="[HLS 200-70]" key="HLS_70_1308" tag="" content="Cannot find any design unit to elaborate."/>
+	<Message severity="INFO" prefix="[Common 17-206]" key="Common 17-206" tag="" content="Exiting vivado_hls at Thu Jul 18 10:59:43 2019..."/>
+</Messages>
